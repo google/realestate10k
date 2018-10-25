@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<!--
+Copyright 2018 Google LLC
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<link rel=stylesheet href=style.css>
+<script src=ga.js></script>
+<title>RealEstate10K: A Large Dataset of Camera Trajectories from Video Clips</title>
+
+<!-- Top  -->
+<div class=top>
+  <span class=title>RealEstate10K</span>
+  <div class=right>
+    <a href=index.html>Home</a>
+    <a href=download.html>Download</a>
+    <a href=people.html>Team</a>
+  </div>
+</div>
+
+<div class=alt-content>
+<div class=section>
+<h2>Download (v1.0)</h2>
+<div class=textblock><p>
+The camera trajectories for RealEstate10K can be downloaded here:
+<a href="https://storage.cloud.google.com/realestate10k-public-files/RealEstate10K.tar.gz"
+  download="RealEstate10K.tgz"
+  onclick="ga('send', 'event', 'Files', 'click', 'RealEstate10K)">RealEstate10K.tgz</a> (720MB)
+
+<p>The data consists of a set of .txt files, one for each video
+clip, specifying timestamps and poses for frames in that clip. For a
+learning application, frames can be sampled from the training clips in
+order for learning, for instance, a view synthesis model. In Google's
+2018 SIGGRAPH
+paper <a href="https://ai.google/research/pubs/pub46965">Stereo
+Magnification: Learning view synthesis using multiplane images</a>, for
+example, triplets of frames were sampled from each clip during training,
+two for predicting a model, and a third held out as ground truth for
+computing a view synthesis loss used to train the network.
+<p>
+This data is licensed by Google LLC under a
+<a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons
+Attribution 4.0 International License.</a>
+</div>
+</div>
+
+<div class=section>
+<h3>Dataset Design</h3>
+<div class=textblock><p>
+The data is split into <b>train</b> and <b>test</b> subdirectories, each
+with a set of .txt files, one .txt file for each video clip (about 90%
+of the clips are in <b>train</b>, and the remaining 10%
+in <b>test</b>). The format of each .txt file is as follows:
+<pre>
+  &lt;Video URL&gt;
+  &lt;frame1&gt;
+  &lt;frame2&gt;
+  &lt;...&gt;
+</pre>
+where each <b>frame line</b> has the following 19 columns:
+<pre>
+     1. <b>timestamp</b> (int: microseconds since start of video)
+
+   2-6. <b>camera intrinsics</b> (float: focal_length_x, focal_length_y,
+                                  principal_point_x, principal_point_y)
+
+  7-19. <b>camera pose</b> (floats forming 3x4 matrix in row-major order)
+</pre>
+<p>
+The camera intrinsics can be organized into a 3x3 matrix <b>K</b> and
+the camera pose parameters into a 3x4 matrix
+<span class=nobreak><b>P</b> = [ <b>R</b> | <b>t</b> ],</span>
+such that the matrix <b>KP</b> maps a (homogeneous) 3D
+point <b>p</b> in a world coordinate frame to a (homogeneous) 2D point
+in the image.
+<p>
+The camera intrinsics are expressed in
+resolution-independent <b>normalized image coordinates</b>, where the
+top left corner of the image is (0,0), and the bottom right corner of
+the image is (1,1). This allows for the intrinsic parameters to be
+applied to frames at whatever resolution they are represented on disk
+(or resized to prior to training), by scaling them according to the
+image size in pixels. For an image of resolution <i>width</i>
+x <i>height</i> pixels, the intrinsics matrix at the actual scale of the
+image is
+<p>
+  <div class=equation>
+    K = <div class=lbrack></div>
+    <table class=inline>
+      <tr>
+        <td>width &middot; focal_length_x</td>
+        <td>0</td>
+        <td>width &middot; principal_point_x</td>
+     </tr>
+     <tr>
+       <td>0</td>
+       <td>height &middot; focal_length_y</td>
+       <td>height &middot; principal_point_y</td>
+     </tr>
+     <tr>
+       <td>0</td>
+       <td>0</td>
+       <td>1</td>
+     </tr>
+    </table><div class=rbrack></div>
+  </div>
+</div>
+</div>
+
+</div>
+<div class=bottom>
+  <img src="https://www.gstatic.com/images/branding/googlelogo/2x/googlelogo_dark_color_42x16dp.png" alt="Google">
+  <div class=right>
+    <a href="https://www.google.com/">Google</a>
+    <a href="https://www.google.com/intl/en/about/">About Google</a>
+    <a href="https://www.google.com/intl/en/policies/privacy/">Privacy</a>
+    <a href="https://www.google.com/intl/en/policies/terms/">Terms</a>
+  </div>
+</div>

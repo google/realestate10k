@@ -1,0 +1,225 @@
+/*
+* Copyright 2018 Google LLC
+* 
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+* 
+*     https://www.apache.org/licenses/LICENSE-2.0
+* 
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700|Roboto+Mono:400,700');
+@import url('https://themes.googleusercontent.com/fonts/css?kit=Ry7ZpkCWHRNK4QK2VqZc1A');
+
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  min-width: 640px;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.content, .alt-content {
+  padding: 80px 0 20px;
+  min-height: calc(100vh - 155px);
+}
+
+pre {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 16px;
+  line-height: 20px;
+  overflow-x: auto;
+}
+
+a img {
+  border: 0;
+}
+
+.top .title {
+  font-size: 35px;
+  padding-left: 25px;
+}
+
+.top .title::before,
+.top .right::before,
+.bottom::before {
+  content: "";
+  height: 50px;
+  display: inline-block;
+}
+
+.right {
+  position: absolute;
+  right: 25px;
+  top: 0;
+}
+
+.top {
+  background-color: #4285f4; /* blue */
+  box-shadow: 2px 0 5px #2c3539;
+  height: 80px;
+  color: white;
+  font-family: 'Google Sans', sans-serif;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-width: 640px;
+  z-index: 1;
+}
+
+.top a {
+  font-size: 24px;
+  margin-left: 10px;
+  padding: 10px 5px;
+  text-decoration: none;
+}
+
+.top a:visited, .top a {
+  color: white;
+}
+
+.top a:hover {
+  background-color: #396bbc;  /* dark blue */
+}
+
+.bottom {
+ position: relative;
+ height: 55px;
+ z-index: 1;
+ background: red;
+ background: #eceff1;
+}
+
+.bottom img {
+  position: absolute;
+  left: 25px;
+  top: 15px;
+  opacity: .54;
+}
+
+.bottom a {
+  font-size: 12px;
+  padding-left: 10px;
+  text-decoration: none;
+}
+
+.bottom a,
+.bottom a:visited {
+  color: #4285f4;  /* dark blue */
+}
+
+.bottom .right {
+  top: 25px;
+}
+
+.section {
+  padding: 45px 75px;
+}
+
+.content .section:nth-child(even),
+.alt-content .section:nth-child(odd) {
+  background: #eee;
+}
+
+.textblock {
+  max-width: 960px;
+  margin: auto;
+}
+
+.nobreak {
+  white-space: nowrap;
+}
+
+h1,h2,h3 {
+  font-family: 'Google Sans', sans-serif;
+  color: #4285f4;  /* blue */
+  margin: 0;
+  margin-left: -50px;
+  padding: 10px 0 2px;
+}
+
+h1 {
+  font-size: 35px;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 35px;
+  font-weight: normal;
+}
+
+h3 {
+  font-size: 28px;
+  font-weight: normal;
+}
+
+.equation {
+  display: block;
+  white-space: nowrap;
+  overflow-x: auto;
+  text-align: center;
+}
+.equation > * {
+  vertical-align: middle;
+}
+.equation td { padding: 0 .4em; }
+.lbrack, .rbrack {
+  display: inline-block;
+  height: 4em;
+  border: 2px solid black;
+  width: 5px;
+}
+.lbrack { border-right: none; }
+.rbrack { border-left: none; }
+.inline { display: inline-block; }
+
+.centered {
+  text-align: center;
+}
+
+.ref {
+  color: #3367d6;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.author {
+  display: inline-block;
+  background: #efefef;
+  height: 80px;
+  line-height: 80px;
+  margin-right: 20px;
+  padding: 5px;
+  width: 250px;
+  font-weight: bold;
+  border: 1px solid #4285f4; /* blue */
+}
+
+.author img {
+  height: 80px;
+  vertical-align: middle;
+  margin-right: 20px;
+}
+
+.button {
+  background-color: #4285f4; /* blue */
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'Google Sans', sans-serif;
+  font-size: 16px;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.button:hover {
+  background-color: #396bbc;  /* dark blue */
+}
